@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -7,21 +8,21 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers;
 
 [ApiController]
-[Route("api/[controller]")] // /api/users -- the controller suffix automatically get replaced by ASP.Net 
+[Route("api/[controller]")] // /api/users -- the controller suffix automatically get replaced by ASP.Net | UsersController -> users
 public class UsersController(DataContext context) : ControllerBase
 {
     [HttpGet]
-    public ActionResult<IEnumerable<AppUser>> GetUsers()
+    public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
-        var users = context.Users.ToList(); 
+        var users = await context.Users.ToListAsync(); 
 
-        return Ok(users); 
+        return users; 
     }
 
     [HttpGet("{id:int}")] // api/users/1
-    public ActionResult<IEnumerable<AppUser>> GetUsers(int id)
+    public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers(int id)
     {
-        var user = context.Users.Find(id); 
+        var user = await context.Users.FindAsync(id); 
 
         if(user == null) return NotFound(); 
 
