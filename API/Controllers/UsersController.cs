@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-[ApiController]
-[Route("api/[controller]")] // /api/users -- the controller suffix automatically get replaced by ASP.Net | UsersController -> users
-public class UsersController(DataContext context) : ControllerBase
+// [ApiController]
+// [Route("api/[controller]")] // /api/users -- the controller suffix gets automatically  replaced by ASP.Net | UsersController -> users
+public class UsersController(DataContext context) : BaseApiController
 {
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
