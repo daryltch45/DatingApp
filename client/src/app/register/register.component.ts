@@ -1,6 +1,8 @@
-import { Component, inject, input, Input } from '@angular/core';
+import { Component, inject, input, Input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
+import { HttpClient } from '@angular/common/http';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-register',
@@ -12,17 +14,22 @@ import { AccountService } from '../_services/account.service';
 export class RegisterComponent {
   model: any={}; 
   private accountService = inject(AccountService); 
+  http = inject(HttpClient); 
+  cancelRegister = output<boolean>(); 
 
   register(){
+    
     this.accountService.register(this.model).subscribe({
       next: response =>{
         console.log(response); 
+        this.cancel(); 
       }, 
-      error: error => console.log(error)
-    }); 
+      error: error => this.accountService.toastr.error(error.error)
+    });
+
   }
 
   cancel(){
-    console.log("Canceled."); 
+    this.cancelRegister.emit(false)
   }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, model, signal } from '@angular/core';
 import { User } from '../_models/user';
 import { map } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { map } from 'rxjs';
 export class AccountService {
 
   private http = inject(HttpClient); 
-  baseUrl= 'https://localhost:5001/api/';
+  baseUrl= 'http://localhost:5000/api/';
+  toastr=inject(ToastrService); 
   
   // Signals have value change detection
   currentUser=signal<User | null>(null); 
