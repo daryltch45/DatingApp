@@ -153,3 +153,4 @@
 /Users/daryltchienang/Documents/Learnings/ASPNet+Angular/DatingApp/API/bin/Debug/net9.0/Microsoft.IdentityModel.Tokens.dll
 /Users/daryltchienang/Documents/Learnings/ASPNet+Angular/DatingApp/API/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/daryltchienang/Documents/Learnings/ASPNet+Angular/DatingApp/API/bin/Debug/net9.0/System.Security.Permissions.dll
+/Users/daryltchienang/Documents/Learnings/ASPNet+Angular/DatingApp/API/bin/Debug/net9.0/Data/UserSeedData.json
